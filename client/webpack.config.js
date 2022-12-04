@@ -17,7 +17,18 @@ module.exports = () => {
       filename: "[name].bundle.js",
       path: path.resolve(__dirname, "dist"),
     },
-    plugins: [],
+
+    plugins: [
+      // referenced activity #16, this is for are service worker.
+      new GenerateSW({
+        swDest: "./sw.js",
+      }),
+      // referenced activity #10, this is the html plugin for webpack.
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+        title: "Webpack Plugin",
+      }),
+    ],
 
     module: {
       rules: [
