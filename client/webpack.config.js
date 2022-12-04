@@ -21,12 +21,12 @@ module.exports = () => {
 
     module: {
       rules: [
-        // referenced activity #6
+        // referenced activity #6, helps load CSS.
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
-        // referenced activity #8
+        // referenced activity #8, helps load babel.
         {
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
