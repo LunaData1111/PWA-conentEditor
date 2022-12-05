@@ -25,7 +25,7 @@ export const putDb = async (content) => {
 };
 
 // TODO: Add logic for a method that gets all the content from the database
-// referenced assignment #26, the same as putDb.
+// referenced assignment #26, this one is getting data.
 export const getDb = async () => {
   console.log("GET from the database");
   const todosDb = await openDB("jate", 1);
