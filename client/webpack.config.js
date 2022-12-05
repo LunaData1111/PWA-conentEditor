@@ -19,15 +19,34 @@ module.exports = () => {
     },
 
     plugins: [
-      // referenced activity #16, this is for are service worker.
-      new GenerateSW({
-        swDest: "./sw.js",
-      }),
       // referenced activity #10, this is the html plugin for webpack.
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "Webpack Plugin",
+        title: "J.A.T.E",
       }),
+      // referenced activity #19, new service worker file.
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+      // referenced activity #26, webpack that makes manifest.json.
+      new WebpackPwaManifest({
+       name: 'Just Another Text Editor',
+       short_name: 'J.A.T.E',
+       description: 'Note editor, pwa.',
+       background: '#21130d',
+       theme: '#21130d',
+       start_url: '/',
+       publicPath: '/',
+       icons: [
+        {
+          src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+        }
+       ]
+
+      })
     ],
 
     module: {
@@ -45,6 +64,10 @@ module.exports = () => {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-propsal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },
