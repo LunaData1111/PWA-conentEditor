@@ -26,27 +26,26 @@ module.exports = () => {
       }),
       // referenced activity #19, new service worker file.
       new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js',
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
       // referenced activity #26, webpack that makes manifest.json.
       new WebpackPwaManifest({
-       name: 'Just Another Text Editor',
-       short_name: 'J.A.T.E',
-       description: 'Note editor, pwa.',
-       background: '#21130d',
-       theme: '#21130d',
-       start_url: '/',
-       publicPath: '/',
-       icons: [
-        {
-          src: path.resolve('src/images/logo.png'),
+        name: "Just Another Text Editor",
+        short_name: "J.A.T.E",
+        description: "Note editor, pwa.",
+        background: "#21130d",
+        theme: "#21130d",
+        start_url: "/",
+        publicPath: "/",
+        icons: [
+          {
+            src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('assets', 'icons'),
-        }
-       ]
-
-      })
+            destination: path.join("assets", "icons"),
+          },
+        ],
+      }),
     ],
 
     module: {
@@ -65,7 +64,7 @@ module.exports = () => {
             options: {
               presets: ["@babel/preset-env"],
               plugins: [
-                "@babel/plugin-propsal-object-rest-spread",
+                "@babel/plugin-proposal-object-rest-spread",
                 "@babel/transform-runtime",
               ],
             },
