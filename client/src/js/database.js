@@ -16,10 +16,10 @@ const initdb = async () =>
 // referenced assignment #26, database uses the idb module.
 export const putDb = async (content) => {
   console.log("PUT to the database");
-  const todosDb = await openDB("jate", 1);
-  const tx = todosDb.transaction("jate", "readwrite");
+  const contactDb = await openDB("jate", 1);
+  const tx = contactDb.transaction("jate", "readwrite");
   const store = tx.objectStore("jate");
-  const request = store.put({ id: 1, todo: content });
+  const request = store.put({ id: 1, value: content });
   const result = await request;
   console.log("🚀 - data saved to the database", result);
 };
@@ -28,10 +28,10 @@ export const putDb = async (content) => {
 // referenced assignment #26, this one is getting data.
 export const getDb = async () => {
   console.log("GET from the database");
-  const todosDb = await openDB("jate", 1);
-  const tx = todosDb.transaction("jate", "readwrite");
+  const contactDb = await openDB("jate", 1);
+  const tx = contactDb.transaction("jate", "readwrite");
   const store = tx.objectStore("jate");
-  const request = store.get(id);
+  const request = store.getAll();
   const result = await request;
   console.log("result.value", result);
   return result;
