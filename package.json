@@ -14,14 +14,13 @@
     "build": "cd client && npm run build",
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
     "server": "cd server nodemon server.js --ignore client",
-
     "install": "cd server && npm i && cd ../client && npm i",
     "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  
+
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^1.4.1",

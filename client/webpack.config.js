@@ -22,7 +22,7 @@ module.exports = () => {
       // referenced activity #10, this is the html plugin for webpack.
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "J.A.T.E",
+        title: "JATE",
       }),
       // referenced activity #19, new service worker file.
       new InjectManifest({
@@ -31,6 +31,8 @@ module.exports = () => {
       }),
       // referenced activity #26, webpack that makes manifest.json.
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: "Just Another Text Editor",
         short_name: "J.A.T.E",
         description: "Note editor, pwa.",
@@ -58,7 +60,7 @@ module.exports = () => {
         // referenced activity #8, helps load babel.
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
           use: {
             loader: "babel-loader",
             options: {
