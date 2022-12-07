@@ -33,8 +33,13 @@ registerRoute(
   new StaleWhileRevalidate({
     cacheName: "assest-cache",
     plugins: [
+      // here will cache respones to header to give 30 day max.
       new CacheableResponsePlugin({
         statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, //30 Days
       }),
     ],
   })
